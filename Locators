@@ -1,0 +1,30 @@
+package seleniumPractice;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Locators {
+
+	public static void main(String[] args) {
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\DELL\\eclipse-workspace\\SeliniumProjects\\drivers\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.facebook.com/");
+		driver.findElement(By.id("email")).sendKeys("test@gmail.com");
+		driver.findElement(By.name("pass")).sendKeys("Test@123");
+
+		
+		driver.findElement(By.linkText("Forgotten password?")).click();
+		driver.navigate().back();
+		
+		driver.findElement(By.cssSelector("input[id='email']")).clear();
+		driver.findElement(By.cssSelector("input[id='email']")).sendKeys("demo");
+		
+		driver.findElement(By.xpath("//input[@id='pass']")).sendKeys("testing");
+		driver.quit();
+		
+
+	}
+
+}
