@@ -1,0 +1,46 @@
+package seleniumPractice;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Waits {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\DELL\\eclipse-workspace\\SeliniumProjects\\drivers\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		 driver.get("https://www.saucedemo.com/");
+	     driver.manage().window().maximize();
+	     
+	     //implicit
+	     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	     
+	     driver.findElement(By.id("user-name")).sendKeys("user");
+	     driver.findElement(By.id("password")).sendKeys("pass");
+	     
+	     //explicit
+	     WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
+	     
+	     wait.until(ExpectedConditions.elementToBeClickable(By.id("login-button"))).click();
+	     wait.until(ExpectedConditions.titleContains("Swag"));
+
+	     System.out.println("Login Successful");
+	     driver.quit();
+
+	     
+	     
+	     
+	     
+	     
+	     
+		
+
+	}
+
+}
