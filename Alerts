@@ -1,0 +1,40 @@
+package seleniumPractice;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AlertEx {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\DELL\\eclipse-workspace\\SeliniumProjects\\drivers\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://testing.kaashivinfotech.in/Alerts.html");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//button[@onclick='alertbox()']")).click();
+		Alert alert=driver.switchTo().alert();
+		
+		Thread.sleep(3000);
+		
+		alert.accept();
+		
+		driver.findElement(By.partialLinkText("Cancel")).click();
+		driver.findElement(By.xpath("//button[@onclick='confirmbox()']")).click();
+		alert.dismiss();
+		
+		
+		driver.findElement(By.partialLinkText("Textbox")).click();
+		driver.findElement(By.xpath("//button[@onclick='promptbox()']")).click();
+		alert.sendKeys("Automation tester");
+		alert.accept();
+		
+		
+		
+		
+		
+	}
+
+}
